@@ -3,14 +3,13 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import Any, Generic, TypeVar
-
 from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar
 
 T = TypeVar("T")
 

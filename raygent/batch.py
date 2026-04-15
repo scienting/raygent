@@ -3,16 +3,15 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import Any, TypeVarTuple, Unpack
-
 from collections.abc import Generator, Iterable
 from dataclasses import dataclass
 from itertools import islice
+from typing import Any, TypeVarTuple, Unpack
 
 Ts = TypeVarTuple("Ts")
 

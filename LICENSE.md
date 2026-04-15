@@ -2,7 +2,7 @@
 
 Contributor: Scientific Computing Studio
 
-Source Code: https://github.com/scienting/raygent
+Source Code: <https://github.com/scienting/raygent>
 
 ## Purpose
 

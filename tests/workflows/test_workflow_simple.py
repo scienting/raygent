@@ -3,7 +3,7 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
@@ -83,12 +83,12 @@ def test_multi_node_dag_pipeline():
     source_n2, source_2 = dag.add_source()
 
     # Add fully-connected nodes to process our workflow
-    ## Top
+    # Top
     prefactor_n = dag.add(PrefactorTask(), inputs=source_n1, task_kwargs={"factor": 2})
     square_n1 = dag.add(SquareTask(), inputs=prefactor_n)
-    ## Bottom
+    # Bottom
     square_n2 = dag.add(SquareTask(), inputs=source_n2)
-    ## Combined
+    # Combined
     comb = dag.add(CombineTask(), inputs=(square_n1, square_n2))
     summed = dag.add(SumTask(), inputs=comb)
 

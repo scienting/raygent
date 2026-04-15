@@ -3,14 +3,13 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import Any, Generic, TypeVar
-
 from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar
 
 from loguru import logger
 
@@ -21,7 +20,7 @@ T = TypeVar("T")
 
 class ResultsHandler(ABC, Generic[T]):
     """
-    Abstract base class for handling results from [`Task`][task.Task].
+    Abstract base class for handling results from [`Task`][raygent.task.Task].
     """
 
     def __init__(self, saver: Saver[T] | None = None, save_interval: int = 1) -> None:
@@ -43,11 +42,11 @@ class ResultsHandler(ABC, Generic[T]):
         **kwargs: object,
     ) -> None:
         """
-        Handles a [`Result`][results.result.Result] to the handler. This method is
-        typically called when a [`Task`][task.Task] completes execution.
+        Handles a [`Result`][raygent.results.result.Result] to the handler. This method is
+        typically called when a [`Task`][raygent.task.Task] completes execution.
 
         Args:
-            result: A [`Result`][results.result.Result] produced by a batch.
+            result: A [`Result`][raygent.results.result.Result] produced by a batch.
         """
 
     @abstractmethod

@@ -3,16 +3,15 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import Generic, TypeVar, override
-
 from bisect import bisect_right
 from collections.abc import MutableSequence
 from dataclasses import dataclass
+from typing import Generic, TypeVar, override
 
 from loguru import logger
 

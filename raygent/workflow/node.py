@@ -3,15 +3,14 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import TYPE_CHECKING, Any, Never, override
-
 import uuid
 from dataclasses import dataclass, field
+from typing import TYPE_CHECKING, Any, Never, override
 
 import ray
 
@@ -58,15 +57,15 @@ class TaskActor:
     ) -> None:
         """
         Args:
-            task: An initialized [`Task`][task.Task] this ray Actor is responsible for.
+            task: An initialized [`Task`][raygent.task.Task] this ray Actor is responsible for.
             num_inputs: The number of inputs the `task` takes. This is used
-                to initialize [`buffers`][workflow.node.TaskActor.buffers].
-            task_kwargs: Keyword arguments for [`do()`][task.Task.do] method. All
+                to initialize [`buffers`][raygent.workflow.node.TaskActor.buffers].
+            task_kwargs: Keyword arguments for [`do()`][raygent.task.Task.do] method. All
                 positional arguments are handled with queues.
         """
         self.task: "Task" = task
-        """An initialized [task][task.Task] this `TaskActor` will call when receiving
-        data in [`input_queues`][workflow.node.TaskActor.input_queues]."""
+        """An initialized [task][raygent.task.Task] this `TaskActor` will call when receiving
+        data in [`input_queues`][raygent.workflow.node.TaskActor.input_queues]."""
         if task_kwargs is None:
             task_kwargs = {}
         self.task_kwargs: dict[str, Any] = task_kwargs

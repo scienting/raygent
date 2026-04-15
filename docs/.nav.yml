@@ -1,10 +1,10 @@
 nav:
   - Home: index.md
   - Tasks: tasks.md
-  - Runner: runner.md
+  - DAG: dag.md
   - examples
-  - API: api
   - Development: development.md
+  - API: api
 
 sort:
   type: natural

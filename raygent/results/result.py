@@ -3,14 +3,13 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import Generic, TypeVar
-
 from dataclasses import dataclass
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
@@ -18,7 +17,7 @@ T = TypeVar("T")
 @dataclass
 class Result(Generic[T]):
     value: T | None
-    """Computed values returned by [`do()`][task.Task.do]."""
+    """Computed values returned by [`do()`][raygent.task.Task.do]."""
 
 
 @dataclass

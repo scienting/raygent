@@ -3,14 +3,13 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
-from typing import Any
-
 from abc import ABC, abstractmethod
+from typing import Any
 
 
 class Task(ABC):
@@ -19,9 +18,9 @@ class Task(ABC):
     The `Task` class provides a flexible framework for processing data items and
     serves as the core computational unit in the `raygent` framework.
 
-    The only required implementation is [`do`][task.Task.do]
+    The only required implementation is [`do`][raygent.task.Task.do]
     which specifies how to process a batch of items. For example, writing a
-    [`Task`][task.Task] that computes the mean value across rows of a
+    [`Task`][raygent.task.Task] that computes the mean value across rows of a
     NumPy array could be implemented like so.
 
     ```python
@@ -36,7 +35,7 @@ class Task(ABC):
             return mean
     ```
 
-    We can just call [`do`][task.Task.do] directly if we
+    We can just call [`do`][raygent.task.Task.do] directly if we
     want to use this task.
 
     ```python
@@ -58,7 +57,7 @@ class Task(ABC):
         """Batch process data.
 
         This method defines the computation logic for batch processing a collection
-        of data together. It is called by the [`run_batch`][task.Task.run_batch].
+        of data together.
 
         Args:
             *args: Position arguments.

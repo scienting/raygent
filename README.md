@@ -172,26 +172,35 @@ pip install .
 This will install all dependencies and `raygent` into your current Python environment.
 To enable `raygent`'s full parallelization capabilities with DAG workflows, install it with the `workflow` extra.
 
-```python
+```sh
 pip install .[workflow]
 ```
 
 ## Development
 
-We use [pixi](https://pixi.sh/latest/) to manage Python environments and simplify the developer workflow.
-Once you have [pixi](https://pixi.sh/latest/) installed, move into `raygent` directory (e.g., `cd raygent`) and install the  environment using the command
+We use [Pixi](https://pixi.sh/latest/) to manage environments and dependencies.
+After installing [Pixi](https://pixi.sh/latest/), clone the repo and run:
 
 ```bash
 pixi install
+pixi shell -e dev
 ```
 
-Now you can activate the new virtual environment using
-
-```sh
-pixi shell
-```
+This gives you a fully configured environment with testing, linting, formatting, and build tools.
+See the [development guide](https://scienting.github.io/pcdigitizer/development) for the complete walkthrough, including how to run tests, build the package, and publish releases.
 
 ## License
 
-This software is licensed under the **Prosperity Public License 3.0.0**.  
-See [LICENSE.md](https://github.com/scienting/raygent/blob/main/LICENSE.md) for full terms, including noncommercial use and 30-day commercial trial conditions.
+`raygent` is licensed under the [Prosperity Public License 3.0.0](https://github.com/scienting/raygent/blob/main/LICENSE.md).
+
+**Noncommercial use is free.**
+Academic researchers, university labs, nonprofits, and individual learners can use, modify, and distribute this software and any datasets it generates at no cost.
+If you use `raygent` in published research, a citation is appreciated.
+
+**Commercial use requires a paid license.**
+The Prosperity Public License includes a 30-day trial period for commercial evaluation.
+After that, for-profit companies using `raygent` or its outputs in commercial products, services, or internal operations need a commercial license.
+This includes using the generated datasets in proprietary ML pipelines, commercial drug discovery workflows, or products built on the cleaned data.
+
+Revenue from commercial licenses funds continued development, data validation, and maintenance of this project.
+To purchase a commercial license, contact [us@scient.ing](mailto:us@scient.ing).

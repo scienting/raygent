@@ -1,20 +1,13 @@
-# Build
-dist/
-_version.py
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+*/_version.py
 
-public/
+# Jupyter Notebook
+**/.ipynb_checkpoints
 
-# virtual environment
-.pixi
-*.egg-info
-
-# coverage
-coverage.xml
+# Coverage
 report.xml
-.coverage
-
-
-
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/osx,python,pycharm,windows,visualstudio,visualstudiocode,zsh,jetbrains,jupyternotebooks
@@ -295,11 +288,6 @@ pyrightconfig.json
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
 .history/

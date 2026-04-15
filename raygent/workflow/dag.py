@@ -3,17 +3,16 @@
 # Commercial use is allowed for a 30-day trial only.
 #
 # Contributor: Scientific Computing Studio
-# Source Code: https://github.com/scienting/simlify
+# Source Code: https://github.com/scienting/raygent
 #
 # See the LICENSE.md file for full license terms.
 
 
 """Minimalist DAG builder for deterministic, batch-synchronous stream processing."""
 
-from typing import TYPE_CHECKING, Any, TypeVar, override
-
 import time
 from collections.abc import Generator, Iterable, Sequence
+from typing import TYPE_CHECKING, Any, TypeVar, override
 
 import ray
 from loguru import logger
@@ -32,11 +31,11 @@ T = TypeVar("T")
 
 class DAG:
     """Builder / orchestrator for a deterministic, queue-backed execution graph from
-    [tasks][task.Task].
+    [tasks][raygent.task.Task].
 
     The builder is _stateful_. You add tasks one by one, and the class wires
     ray queues and actors as you go. Once all nodes are created, call
-    [`run`][workflow.dag.DAG.run] to start every actor's main loop concurrently waiting
+    [`run`][raygent.workflow.dag.DAG.run] to start every actor's main loop concurrently waiting
     for messages in the source-node queues.
     """
 
@@ -77,25 +76,25 @@ class DAG:
         n_workers: int = 1,
         n_cpu_per_worker: int = 1,
     ) -> NodeHandle:
-        """Add a [`Task`][task.Task] that will be fully connected to the `DAG`. In
+        """Add a [`Task`][raygent.task.Task] that will be fully connected to the `DAG`. In
         other words, no user-facing queues to send or recieve messages directly. All
         inbound and outbond messages are other nodes, including
-        [sources][workflow.dag.DAG.add_source] and
-        [sinks][workflow.dag.DAG.add_sink].
+        [sources][raygent.workflow.dag.DAG.add_source] and
+        [sinks][raygent.workflow.dag.DAG.add_sink].
 
         Args:
-            task: An instance of your [`Task`][task.Task] API. This minimally should
-                have a [`do()`][task.Task.do] implementation.
-            inputs: Upstream [`NodeHandle`][workflow.node.NodeHandle] objects that
-                will send [`BatchMessage`][batch.BatchMessage]s to this
-                `task`. If the [`Task`][task.Task] takes more than one positional
+            task: An instance of your [`Task`][raygent.task.Task] API. This minimally should
+                have a [`do()`][raygent.task.Task.do] implementation.
+            inputs: Upstream [`NodeHandle`][raygent.workflow.node.NodeHandle] objects that
+                will send [`BatchMessage`][raygent.batch.BatchMessage]s to this
+                `task`. If the [`Task`][raygent.task.Task] takes more than one positional
                 argument, the order of these `inputs` matters.
-            task_kwargs: Keyword arguments for [`do()`][task.Task.do] method. All
+            task_kwargs: Keyword arguments for [`do()`][raygent.task.Task.do] method. All
                 positional arguments are handled with queues.
             name: Optional symbolic name. If omitted, a unique one is
                 derived from the `task` class name and a UUID snippet.
             queue_size: Override for this node's incoming queues; defaults to
-                the builder-level [`_default_qsize`][workflow.dag.DAG._default_qsize].
+                the builder-level [`_default_qsize`][raygent.workflow.dag.DAG._default_qsize].
             n_workers: Maximum number of parallel workers for this node (i.e., the
                 `max_concurrency` argument for ray).
             n_cpu_per_worker: Number of CPU cores per individual workers (i.e., the
@@ -166,9 +165,9 @@ class DAG:
                 back pressure.
 
         Returns:
-            A [`NodeHandle`][workflow.node.NodeHandle] for referencing this source
+            A [`NodeHandle`][raygent.workflow.node.NodeHandle] for referencing this source
                 in other nodes.
-            The [bounded queue][workflow.queue.BoundedQueue] used to inject batches
+            The [bounded queue][raygent.workflow.queue.BoundedQueue] used to inject batches
                 into the `DAG` through this source node.
 
         Examples:
