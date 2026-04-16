@@ -35,8 +35,8 @@ class DAG:
 
     The builder is _stateful_. You add tasks one by one, and the class wires
     ray queues and actors as you go. Once all nodes are created, call
-    [`run`][raygent.workflow.dag.DAG.run] to start every actor's main loop concurrently waiting
-    for messages in the source-node queues.
+    [`run`][raygent.workflow.dag.DAG.run] to start every actor's main loop concurrently
+    waiting for messages in the source-node queues.
     """
 
     def __init__(self, *, queue_size: int = 128, max_cores: int = 8) -> None:
